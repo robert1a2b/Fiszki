@@ -14,6 +14,8 @@ Project is created with:
 * Spring Boot 3.4.3
 * Maven 4.0.0
 * MySql 8.0
+* H2 database
+* Lombok
 
 ## Build and run the app using maven
 To build app:  `mvn clean install`
@@ -22,20 +24,42 @@ To run app: `mvn spring-boot:run`
 
 App is running at: `http://localhost:8080/`
 
+H2 database console at: `http://localhost:8080/h2-console`
+* login: sa
+* password: password
+
+
 ## Rest APIs
 
-### Set of all words from database in pl, en, de, es
-`GET /api/words`
+### GET
+#### Set of all words translations from database in pl, en, de, es : `/words`
 
-### Set of random word in pl, en, de, es
-`GET /api/word`
+#### Set of random word translations in pl, en, de, es: `/word`
 
-### Set of all words from database in pl, en, de, es
-GET /api/translate/{pl_word}
+#### Translation of typed pl word to en, de, es : `/translate/{pl_word}`
 
-GET /api/pl ; GET /api/en ; GET /api/de ; GET /api/es
+#### Random pl word : `/pl` 
 
-PUT /api/
+##### Translation of word from '/pl' to en, de, es:  `/pl/en` `/pl/de` `/pl/es`
 
-DELETE /api/notes/{noteId}
+#### Random en word : `/en` 
+* ##### Translation of word from '/en' to pl : `/en/pl`
+
+#### Random de word : `/de` 
+* ##### Translation of word from '/de' pl: `/de/pl`
+
+#### Random es word : `/es` 
+* ##### Translation of word from '/es' pl : `/es/pl`
+
+#### Map of pl-en word pairs to create memo game : `/memotest/en`
+
+#### Map of pl-de word pairs to create memo game : `/memotest/de`
+
+#### Map of pl-es word pairs to create memo game : `/memotest/es`
+
+### PUT 
+#### Adding set of word in pl, en, de, es to database : `/words`
+
+### DELETE 
+#### Deleting typed pl_word with translations from database : `/words/{pl_word}`
 
